@@ -1,5 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=PT+Sans&family=Playfair+Display+SC:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
 body {
   background-color: #000 !important;
   color: #fff !important;
@@ -71,6 +74,7 @@ body {
   width: 100%;
   height: 100%;
 }
+/* movie card overlay 정보들 */
 .movie-card-overlay h1{
   font-family: "Playfair Display SC", serif;
   font-weight: 400;
@@ -108,11 +112,136 @@ align-items: center;
   margin-right: 5px;
 }
 .adult {
-  margin-top: 5px;
+  margin-top: 4px;
   font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
   font-style: italic;
   font-weight: 700;
   font-size: 15px;
   color: #dc143c;
 }
+
+/* MOVIE-POSTER */
+.movie-poster {
+  display: block;
+  max-height: 550px;
+  height: 100%;
+  border-radius: 25px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 30% 50%;
+  overflow: hidden;
+  margin-bottom: 30px;
+  position:relative;
+  cursor:pointer;
+  margin-bottom:20px;
+  transition:all .5s;
+}
+.movie-poster:hover {
+  transform: scale(1.03) translateZ(20px);
+  z-index:2
+}
+.movie-poster-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-blend-mode: multiply;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 14px;
+  font-style: normal;
+}
+.movie-poster-genre {
+  padding-top: 10px;
+  padding-left:25px ;
+  margin-bottom: 15px;
+}
+.movie-poster-genre .genre-badge {
+  padding: 7px 10px;
+  border-radius: 8px;
+  margin-right: 5px;
+}
+
+.movie-poster-header {
+  padding-top: 25px;
+  padding-left: 25px;
+  display: flex;
+}
+.movie-poster-header img {
+  float: left;
+  margin-right: 20px;
+}
+
+.movie-poster-header-info h1{
+  font-weight: 400;
+  font-size: 26px;
+
+}
+.movie-poster-header-info span{
+  color: #9ac7fa;
+}
+.poster-overview {
+  padding-left: 25px;
+}
+.movie-poster-info_info {
+  padding-left: 25px;
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+.movie-poster-info_info div{
+  margin-right: 15px;
+}
+
+
+@media screen and (min-width: 768px){
+  .movie-poster {
+    width: 90%;
+}
+.movie-poster-info {
+  background: linear-gradient(90deg,#0d0d0c 40%,transparent);
+}
+.movie-poster-header {
+  width: 70%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.movie-poster-genre {
+  width: 60%;
+}
+.movie-poster-genre .genre-badge {
+  margin-bottom: 7px;
+}
+.poster-overview{
+  width: 50%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  overflow: hidden;
+}}
+@media screen and (max-width: 768px){
+.movie-poster {
+    width: 95%;
+    min-height: 350px;
+    height: auto;
+}
+.movie-poster-header {
+    width: 100%;
+    margin-top: 85px;
+}
+.movie-poster-info{
+  background: linear-gradient(0deg,#141413 50%,transparent);
+}
+.poster-overview{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}}

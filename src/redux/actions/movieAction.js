@@ -1,7 +1,7 @@
 import api from "../api";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-function getMovies() {
+function getMovies(searchQuery) {
   return async (dispatch, getState) => {
     try {
       dispatch({ type: "GET_MOVIES_REQUEST" });
@@ -17,15 +17,28 @@ function getMovies() {
       const genreApi = api.get(
         `/genre/movie/list?api_key=${API_KEY}&language=en'`
       );
+      let searchApi = ``;
+      {
+        searchQuery
+          ? (searchApi = api.get(
+              `/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=1`
+            ))
+          : (searchApi = popularMovieApi);
+      }
 
-      let [popularMovies, topRatedMovies, upComingMovies, genreList] =
-        await Promise.all([
-          popularMovieApi,
-          topRatedApi,
-          upComingApi,
-          genreApi,
-        ]);
-      console.log("genre", genreList);
+      let [
+        popularMovies,
+        topRatedMovies,
+        upComingMovies,
+        genreList,
+        searchedMovies,
+      ] = await Promise.all([
+        popularMovieApi,
+        topRatedApi,
+        upComingApi,
+        genreApi,
+        searchApi,
+      ]);
       dispatch({
         type: "GET_MOVIES_SUCCESS",
         payload: {
@@ -33,6 +46,7 @@ function getMovies() {
           topRatedMovies: topRatedMovies.data,
           upComingMovies: upComingMovies.data,
           genreList: genreList.data.genres,
+          searchedMovies: searchedMovies.data,
         },
       });
     } catch (error) {
@@ -40,6 +54,7 @@ function getMovies() {
     }
   };
 }
+
 export const MovieAction = {
   getMovies,
 };
