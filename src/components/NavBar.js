@@ -18,7 +18,7 @@ const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container fluid>
-        <Link to="/">
+        <Link to="/" style={{ marginRight: "10px" }}>
           <img
             width={100}
             src="https://i.pcmag.com/imagery/reviews/05cItXL96l4LE9n02WfDR0h-5.fit_scale.size_760x427.v1582751026.png"
@@ -42,7 +42,7 @@ const NavBar = () => {
             <Form.Control
               type="search"
               placeholder="Search"
-              className="me-2"
+              className="me-2 nav-input"
               aria-label="Search"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}

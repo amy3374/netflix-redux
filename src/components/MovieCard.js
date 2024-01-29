@@ -1,13 +1,18 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { MdGrade } from "react-icons/md";
-import { IoMdPeople } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Info from "./Info";
 
 const MovieCard = ({ item }) => {
   const { genreList } = useSelector((state) => state.movie);
+  const navigate = useNavigate();
+  const goToDetail = () => {
+    navigate(`/movies/${item.id}`);
+  };
   return (
     <div
+      onClick={goToDetail}
       className="movie-card"
       style={{
         backgroundImage:
@@ -26,17 +31,7 @@ const MovieCard = ({ item }) => {
             </Badge>
           ))}
         </div>
-        <div className="movie-card-info">
-          <div className="average">
-            <MdGrade className="average-logo" />
-            {item.vote_average}
-          </div>
-          <div>
-            <IoMdPeople className="popularity" />
-            {item.popularity}
-          </div>
-          <div className="adult">{item.adult ? "19" : "Under18"}</div>
-        </div>
+        <Info name={"info-card"} item={item} />
       </div>
     </div>
   );

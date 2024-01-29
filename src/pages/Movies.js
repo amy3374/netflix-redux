@@ -10,15 +10,13 @@ import MoviePoster from "../components/MoviePoster";
 // keyword로 검색해서 온 경우 => keyword와 관련된 영화들 보여주기
 const Movies = () => {
   const dispatch = useDispatch();
-  const { searchedMovies, popularMovies, loading } = useSelector(
-    (state) => state.movie
-  );
+  const { searchedMovies, loading } = useSelector((state) => state.movie);
   const [query, setQuery] = useSearchParams();
   const getSearchedMovies = () => {
     let searchQuery = query.get("q");
     dispatch(MovieAction.getMovies(searchQuery));
   };
-  console.log("검색gkwk", searchedMovies);
+
   useEffect(() => {
     getSearchedMovies();
   }, [query]);

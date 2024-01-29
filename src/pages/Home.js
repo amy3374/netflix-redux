@@ -28,13 +28,13 @@ const Home = () => {
   }
   return (
     <div>
-      <Banner movie={popularMovies?.results[0]} />
+      <Banner movie={popularMovies.results[0]} />
       <Container>
-        <h1>Popular Movie</h1>
+        <h1 className="movie-type">Popular Movie</h1>
         <MovieSlide movies={popularMovies} />
-        <h1>Top Rated Movie</h1>
+        <h1 className="movie-type">Top Rated Movie</h1>
         <MovieSlide movies={topRatedMovies} />
-        <h1>Upcoming Movie</h1>
+        <h1 className="movie-type">Upcoming Movie</h1>
         <MovieSlide movies={upComingMovies} />
       </Container>
     </div>

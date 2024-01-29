@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,11 +12,15 @@ body {
   color: #fff;
   margin-right: 20px;
 }
+.me-2.nav-input:focus {
+  outline-style: none;
+}
 .banner {
   height: 600px;
   display: flex;
   align-items: center;
   position: relative;
+  margin-bottom: 25px;
 }
 .banner::before {
   position: absolute;
@@ -36,7 +40,7 @@ body {
   font-style: normal;
 }
 .banner-info h1{
-  font-size: 62px;
+  font-size: 58px;
   font-weight: 700;
   color: #dc143c;
 }
@@ -46,7 +50,15 @@ body {
 }
 .carousel-container {
   overflow: hidden;
-  height: 300px;
+  height: 250px;
+}
+.movie-type {
+  margin-left: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: 30px;
+  font-style: normal;
 }
 
 /* MOVIE CARD */
@@ -92,17 +104,24 @@ body {
 .movie-card-genre .genre-badge{
   margin-right: 10px;
 }
-.movie-card-info {
+
+/* INFO / INFO ICON */
+.info {
 display: flex;
 align-items: center;
 }
-.movie-card-info div{
-  margin-right: 10px;
+.info div{
+  margin-right: 15px;
   display: flex;
   align-items: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
 }
-
-/* MOVIE CARD ICON */
+.info div:last-child{
+  margin-top: -1px;
+  font-weight: 700;
+}
 .average-logo {
   color: yellow;
   margin-right: 5px;
@@ -119,9 +138,24 @@ align-items: center;
   font-size: 15px;
   color: #dc143c;
 }
+.info.info-card {
+  margin-top: 8px;
+}
+.info.info-card div {
+  font-size: 15px;
+}
+.info.info-poster {
+  padding-left: 25px;
+  margin-top: 15px;
+}
+.info.info-detail {
+  padding-left: 25px;
+  margin-bottom: 15px;
+}
 
 /* MOVIE-POSTER */
 .movie-poster {
+  box-sizing: border-box;
   display: block;
   max-height: 550px;
   height: 100%;
@@ -185,19 +219,119 @@ align-items: center;
 }
 .poster-overview {
   padding-left: 25px;
+  margin: 0;
 }
-.movie-poster-info_info {
-  padding-left: 25px;
+/* MOVIE DETAIL PAGE */
+.movie-detail {
+  height: 100vh;
+}
+.detail-banner {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
   display: flex;
-  font-size: 16px;
-  font-weight: 600;
-  padding-bottom: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
 }
-.movie-poster-info_info div{
-  margin-right: 15px;
+.detail-banner-info{
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+
 }
-
-
+.detail-banner-info h1 {
+  font-size: 60px;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+.detail-banner-box {
+  text-decoration: none;
+  padding: 24px 42px;
+  display: flex;
+  background-color: #fff;
+  color:#ABADC5;
+  font-size: 14px;
+  transition: all .3s ease 0s;
+  letter-spacing: 2px;
+}
+.detail-banner-link{
+  text-decoration: none;
+  color:#525470;
+  margin-right: 5px;
+  transition: .3s ease-in-out;
+}
+.detail-banner-link:hover{
+  color: #fff;
+}
+.detail-banner-title{
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+.detail-poster {
+  width: 100%;
+  height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  margin-bottom: 100px;
+}
+.detail-info{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+}
+.detail-genre {
+  list-style: none;
+  display: flex;
+  margin-bottom: 50px;
+  padding-left: 25px;
+}
+.detail-genre .genre-badge{
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 25px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.detail-title {
+  padding-left: 25px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+.detail-tagline {
+  padding-left: 25px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.detail-bar {
+  border-bottom: 2px solid #fff;
+  width: 90%;
+  margin-left: 25px;
+}
+.detail-overview {
+  margin: 0;
+  padding: 30px 0 30px 25px;
+}
+.detail-info_info {
+  padding: 30px;
+  margin: 0;
+}
+.detail-info_info li{
+  list-style-type: none;
+  margin-bottom: 10px
+}
+.detail-info_info li .badge {
+  font-weight: 500;
+  font-size: 13px;
+  width: 120px;
+  text-align: center;
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin-right: 10px;
+}
 @media screen and (min-width: 768px){
   .movie-poster {
     width: 90%;
@@ -227,6 +361,12 @@ align-items: center;
   overflow: hidden;
 }}
 @media screen and (max-width: 768px){
+  .banner-info p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+    overflow: hidden;
+  }
 .movie-poster {
     width: 95%;
     min-height: 350px;
@@ -242,6 +382,7 @@ align-items: center;
 .poster-overview{
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   overflow: hidden;
-}}
+}
+}

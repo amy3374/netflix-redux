@@ -2,6 +2,8 @@ import api from "../api";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 function getMovies(searchQuery) {
+  console.log("Searchquery", searchQuery);
+
   return async (dispatch, getState) => {
     try {
       dispatch({ type: "GET_MOVIES_REQUEST" });
@@ -32,13 +34,16 @@ function getMovies(searchQuery) {
         upComingMovies,
         genreList,
         searchedMovies,
+        // movieDetail,
       ] = await Promise.all([
         popularMovieApi,
         topRatedApi,
         upComingApi,
         genreApi,
         searchApi,
+        // movieDetailApi,
       ]);
+      // console.log("detail", movieDetail);
       dispatch({
         type: "GET_MOVIES_SUCCESS",
         payload: {
@@ -54,7 +59,26 @@ function getMovies(searchQuery) {
     }
   };
 }
+function getMovieDetail(id) {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: "GET_MOVIE__DETAIL_REQUEST" });
+      const movieDetail = await api.get(
+        `/movie/${id}?api_key=${API_KEY}&language=en-US`
+      );
+      dispatch({
+        type: "GET_MOVIE_DETAIL_SUCCESS",
+        payload: {
+          movieDetail: movieDetail.data,
+        },
+      });
+    } catch (error) {
+      dispatch({ type: "GET_MOVIE_DETAIL_FAILURE" });
+    }
+  };
+}
 
 export const MovieAction = {
   getMovies,
+  getMovieDetail,
 };

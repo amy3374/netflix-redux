@@ -1,13 +1,18 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { MdGrade } from "react-icons/md";
-import { IoMdPeople } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import Info from "./Info";
 
 const MoviePoster = ({ item }) => {
   const { genreList } = useSelector((state) => state.movie);
+  const navigate = useNavigate();
+  const goToDetail = () => {
+    navigate(`/movies/${item.id}`);
+  };
   return (
     <div
+      onClick={goToDetail}
       className="movie-poster"
       style={{
         backgroundImage:
@@ -28,24 +33,14 @@ const MoviePoster = ({ item }) => {
           </div>
         </div>
         <div className="movie-poster-genre">
-          {item.genre_ids.map((id) => (
-            <Badge className="genre-badge" bg="danger">
+          {item.genre_ids.map((id, index) => (
+            <Badge key={index} className="genre-badge" bg="danger">
               {genreList.find((item) => item.id === id).name}
             </Badge>
           ))}
         </div>
         <p className="poster-overview">{item.overview}</p>
-        <div className="movie-poster-info_info">
-          <div className="average">
-            <MdGrade className="average-logo" />
-            {item.vote_average}
-          </div>
-          <div>
-            <IoMdPeople className="popularity" />
-            {item.popularity}
-          </div>
-          <div className="adult">{item.adult ? "19" : "Under18"}</div>
-        </div>
+        <Info name={"info-poster"} item={item} />
       </div>
     </div>
   );
