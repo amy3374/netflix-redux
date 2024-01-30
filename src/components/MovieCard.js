@@ -1,19 +1,20 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Info from "./Info";
 
-const MovieCard = ({ item }) => {
+const MovieCard = ({ name, item }) => {
   const { genreList } = useSelector((state) => state.movie);
   const navigate = useNavigate();
   const goToDetail = () => {
     navigate(`/movies/${item.id}`);
   };
+
   return (
     <div
       onClick={goToDetail}
-      className="movie-card"
+      className={`movie-card ${name}`}
       style={{
         backgroundImage:
           "url(" +
@@ -27,7 +28,7 @@ const MovieCard = ({ item }) => {
         <div className="movie-card-genre">
           {item.genre_ids.map((id) => (
             <Badge className="genre-badge" bg="danger">
-              {genreList.find((item) => item.id === id).name}
+              {genreList?.find((item) => item.id === id)?.name}
             </Badge>
           ))}
         </div>

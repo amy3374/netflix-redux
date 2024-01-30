@@ -10,25 +10,28 @@ const Home = () => {
   const dispatch = useDispatch();
   const { popularMovies, topRatedMovies, upComingMovies, loading } =
     useSelector((state) => state.movie);
-  console.log("home", popularMovies);
+  // console.log("home", popularMovies);
+  // console.log("home loading", loading);
 
   useEffect(() => {
     dispatch(MovieAction.getMovies());
   }, []);
   if (loading) {
     return (
-      <ClipLoader
-        color="#ffff"
-        loading={loading}
-        size={150}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
+      <Container className="loading-area">
+        <ClipLoader
+          color="red"
+          loading={loading}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </Container>
     );
   }
   return (
     <div>
-      <Banner movie={popularMovies.results[0]} />
+      <Banner movie={popularMovies?.results[0]} />
       <Container>
         <h1 className="movie-type">Popular Movie</h1>
         <MovieSlide movies={popularMovies} />

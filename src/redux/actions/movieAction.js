@@ -2,8 +2,6 @@ import api from "../api";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 function getMovies(searchQuery) {
-  console.log("Searchquery", searchQuery);
-
   return async (dispatch, getState) => {
     try {
       dispatch({ type: "GET_MOVIES_REQUEST" });
@@ -34,16 +32,13 @@ function getMovies(searchQuery) {
         upComingMovies,
         genreList,
         searchedMovies,
-        // movieDetail,
       ] = await Promise.all([
         popularMovieApi,
         topRatedApi,
         upComingApi,
         genreApi,
         searchApi,
-        // movieDetailApi,
       ]);
-      // console.log("detail", movieDetail);
       dispatch({
         type: "GET_MOVIES_SUCCESS",
         payload: {
@@ -63,13 +58,38 @@ function getMovieDetail(id) {
   return async (dispatch) => {
     try {
       dispatch({ type: "GET_MOVIE__DETAIL_REQUEST" });
-      const movieDetail = await api.get(
+      const movieDetailApi = api.get(
         `/movie/${id}?api_key=${API_KEY}&language=en-US`
       );
+      const movieReviewApi = api.get(
+        `/movie/${id}/reviews?api_key=${API_KEY}&language=en-US`
+      );
+      const recommendationsApi = api.get(
+        `/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US`
+      );
+      const genreApi = api.get(
+        `/genre/movie/list?api_key=${API_KEY}&language=en'`
+      );
+      const movieModalApi = api.get(
+        `/movie/${id}/videos?api_key=${API_KEY}&language=en'`
+      );
+      let [movieDetail, movieReview, recommendations, genreList, movieVideo] =
+        await Promise.all([
+          movieDetailApi,
+          movieReviewApi,
+          recommendationsApi,
+          genreApi,
+          movieModalApi,
+        ]);
+      console.log("modal", movieVideo);
       dispatch({
         type: "GET_MOVIE_DETAIL_SUCCESS",
         payload: {
           movieDetail: movieDetail.data,
+          movieReview: movieReview.data,
+          recommendations: recommendations.data,
+          genreList: genreList.data.genres,
+          movieVideo: movieVideo.data,
         },
       });
     } catch (error) {
@@ -78,7 +98,35 @@ function getMovieDetail(id) {
   };
 }
 
+function getSortedMovies(sortKeyword) {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: "GET_SORTED_MOVIE_REQUEST" });
+      // let sortKeyword = e;
+      let sortedApi = ``;
+      {
+        sortKeyword === "인기순"
+          ? (sortedApi = api.get(
+              `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+            ))
+          : (sortedApi = api.get(
+              `/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
+            ));
+      }
+      let [sortedMovie] = await Promise.all([sortedApi]);
+      console.log("action sort", sortKeyword, sortedMovie);
+      dispatch({
+        type: "GET_SORTED_MOVIE_SUCCESS",
+        payload: { sortedMovie: sortedMovie.data },
+      });
+    } catch (error) {
+      dispatch({ type: "GET_SORTED_MOVIE_FAILURE" });
+    }
+  };
+}
+
 export const MovieAction = {
   getMovies,
   getMovieDetail,
+  getSortedMovies,
 };
