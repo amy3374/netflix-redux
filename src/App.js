@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import MovieDetail from "./pages/MovieDetail";
 import NavBar from "./components/NavBar";
+import Login from "./pages/Login";
 
 //1. 3개의 페이지(홈, 무비, 디테일)
 //2. 홈페이지에서 배너를 볼 수 있다.
@@ -22,7 +23,8 @@ function App() {
     <div>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/main" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:id" element={<MovieDetail />} />
       </Routes>

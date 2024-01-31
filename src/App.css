@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -391,6 +392,67 @@ align-items: center;
   width: 400px;
   height:300px
 }
+
+/* login page */
+.login-back{
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-back::before {
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  content: '';
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 90%);
+}
+.login-info {
+  display: flex;
+  height: 250px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-style: normal;
+}
+.login-info h1{
+  z-index: 2;
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+.login-info h3{
+  z-index: 2;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+.login-button {
+  z-index: 2;
+  width: 300px;
+  text-align: center;
+  padding:10px 20px;
+  background-color: red;
+  font-size: 25px;
+  font-weight: 400;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .4s;
+
+}
+
+.login-button:hover {
+  transform: scale(1.05)
+}
+
 
 @media screen and (min-width: 768px){
   .movie-poster {

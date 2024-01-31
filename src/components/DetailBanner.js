@@ -15,7 +15,7 @@ const DetailBanner = ({ movieDetail }) => {
       <div className="detail-banner-info">
         <h1>NETFLIX</h1>
         <div className="detail-banner-box">
-          <Link className="detail-banner-link" to="/">
+          <Link className="detail-banner-link" to="/main">
             HOME
           </Link>
           <div>|</div>

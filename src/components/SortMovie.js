@@ -8,15 +8,14 @@ const SortMovie = () => {
   const { sortedMovie } = useSelector((state) => state.movie);
   const sort = (e) => {
     let sortKeyword = e;
-    dispatch(MovieAction.getSortedMovies(sortKeyword));
     console.log("sort컴포넌트", sortKeyword);
+    dispatch(MovieAction.getSortedMovies(sortKeyword));
   };
-  console.log("sort컴포넌트", sortedMovie);
   //   useEffect(() => {
   //     // if (sortKeyword !== "") {
   //     //   //   sort();
   //     // }
-  //   }, []);
+  //   }, [sortKeyword]);
   return (
     <Dropdown>
       <Dropdown.Toggle variant="danger" id="dropdown-basic">
@@ -24,8 +23,8 @@ const SortMovie = () => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={(e) => sort("인기순")}>POPULAR</Dropdown.Item>
-        <Dropdown.Item onClick={(e) => sort("현재 상영작")}>
+        <Dropdown.Item onClick={() => sort("인기순")}>POPULAR</Dropdown.Item>
+        <Dropdown.Item onClick={() => sort("현재 상영작")}>
           NOW PLAYING
         </Dropdown.Item>
       </Dropdown.Menu>

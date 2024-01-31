@@ -10,11 +10,13 @@ import { FaSearch } from "react-icons/fa";
 const NavBar = () => {
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
+
   const search = (e) => {
     e.preventDefault();
     navigate(`/movies?q=${keyword}`);
     setKeyword("");
   };
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container fluid>
@@ -31,11 +33,18 @@ const NavBar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Link to="/" className="nav-item" style={{ marginBottom: "5px" }}>
+            <Link
+              to="/main"
+              className="nav-item"
+              style={{ marginBottom: "5px" }}
+            >
               Home
             </Link>
             <Link to="/movies" className="nav-item">
               Movies
+            </Link>
+            <Link to="/" className="nav-item">
+              Login
             </Link>
           </Nav>
           <Form className="d-flex" onSubmit={search}>
