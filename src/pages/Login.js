@@ -1,35 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
-import {
-  GoogleAuthProvider,
-  getAuth,
-  onAuthStateChanged,
-  signInWithPopup,
-} from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const auth = getAuth();
-  const provider = new GoogleAuthProvider();
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      console.log("user", user);
-      if (user) {
-        navigate("/main");
-      } else {
-        navigate("/");
-      }
-    });
-  }, []);
-  const login = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {})
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   return (
     <div
       className="login-back"
@@ -48,9 +20,7 @@ const Login = () => {
             어디서나 자유롭게 시청하세요. <br />
             해지는 언제든 가능합니다.
           </h3>
-          <div className="login-button" onClick={login}>
-            지금 시작하기
-          </div>
+          <div className="login-box">지금 시작하기</div>
         </div>
       </Container>
     </div>

@@ -6,6 +6,7 @@ import Movies from "./pages/Movies";
 import MovieDetail from "./pages/MovieDetail";
 import NavBar from "./components/NavBar";
 import Login from "./pages/Login";
+import ScrollToTop from "./components/ScrollToTop";
 
 //1. 3개의 페이지(홈, 무비, 디테일)
 //2. 홈페이지에서 배너를 볼 수 있다.
@@ -21,6 +22,7 @@ import Login from "./pages/Login";
 function App() {
   return (
     <div>
+      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route path="/" element={<Login />} />

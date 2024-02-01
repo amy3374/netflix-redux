@@ -13,19 +13,29 @@ import SortMovie from "../components/SortMovie";
 const Movies = () => {
   const [query, setQuery] = useSearchParams();
   const dispatch = useDispatch();
+  const [selected, setSelected] = useState("");
   const { searchedMovies, loading, sortedMovie } = useSelector(
     (state) => state.movie
   );
-  console.log("무비페이지 sort", sortedMovie);
+  console.log("무비페이지 sort selected", selected);
 
   const getSearchedMovies = () => {
     let searchQuery = query.get("q");
     dispatch(MovieAction.getMovies(searchQuery));
   };
-
+  const sort = () => {
+    console.log("sort함수 selected", selected);
+    dispatch(MovieAction.getSortedMovies(selected));
+  };
   useEffect(() => {
-    getSearchedMovies();
-  }, [query]);
+    if (selected) {
+      console.log("sort api");
+      sort();
+    } else {
+      console.log("원래api");
+      getSearchedMovies();
+    }
+  }, [query, selected]);
 
   if (loading) {
     return (
@@ -38,22 +48,24 @@ const Movies = () => {
     <Container>
       <Row>
         <Col className="mt-3 mb-3">
-          <SortMovie />
+          <SortMovie selected={selected} setSelected={setSelected} />
         </Col>
       </Row>
       <Row>
         <Col lg={12} xs={12}>
           <Row>
-            {searchedMovies?.results?.map((item, index) => (
-              <Col className="mb-5" key={index} xl={4} lg={6} xs={12}>
-                <MoviePoster item={item} />
-              </Col>
-            ))}
-            {sortedMovie?.results?.map((item, index) => (
-              <Col className="mb-5" key={index} xl={4} lg={6} xs={12}>
-                <MoviePoster item={item} />
-              </Col>
-            ))}
+            {selected
+              ? sortedMovie?.results?.map((item, index) => (
+                  <Col className="mb-5" key={index} xl={4} lg={6} xs={12}>
+                    <MoviePoster item={item} />
+                  </Col>
+                ))
+              : !selected &&
+                searchedMovies?.results?.map((item, index) => (
+                  <Col className="mb-5" key={index} xl={4} lg={6} xs={12}>
+                    <MoviePoster item={item} />
+                  </Col>
+                ))}
           </Row>
         </Col>
       </Row>

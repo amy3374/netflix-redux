@@ -26,7 +26,7 @@ const MovieDetail = () => {
   };
   useEffect(() => {
     dispatch(MovieAction.getMovieDetail(id));
-  }, []);
+  }, [id]);
   if (loading) {
     return (
       <Container className="loading-area">
