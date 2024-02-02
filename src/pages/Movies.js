@@ -24,8 +24,9 @@ const Movies = () => {
     dispatch(MovieAction.getMovies(searchQuery));
   };
   const sort = () => {
+    let searchQuery = query.get("q");
     console.log("sort함수 selected", selected);
-    dispatch(MovieAction.getSortedMovies(selected));
+    dispatch(MovieAction.getSortedMovies(selected, searchQuery));
   };
   useEffect(() => {
     if (selected) {

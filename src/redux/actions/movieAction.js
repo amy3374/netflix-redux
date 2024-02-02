@@ -98,8 +98,8 @@ function getMovieDetail(id) {
   };
 }
 
-function getSortedMovies(selected) {
-  console.log("action selected", selected);
+function getSortedMovies(selected, searchQuery) {
+  // console.log("action selected", selected);
   return async (dispatch) => {
     try {
       dispatch({ type: "GET_SORTED_MOVIE_REQUEST" });
@@ -108,19 +108,19 @@ function getSortedMovies(selected) {
       {
         selected === "인기순"
           ? (sortedApi = api.get(
-              `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+              `/movie/popular?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=1`
             ))
           : selected === "별점순"
           ? (sortedApi = api.get(
-              `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+              `/movie/top_rated?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=1`
             ))
           : (sortedApi = api.get(
-              `/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
+              `/movie/now_playing?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=1`
             ));
       }
 
       let [sortedMovie] = await Promise.all([sortedApi]);
-      console.log("action sort", selected, sortedMovie);
+      // console.log("action sort", selected, sortedMovie);
       dispatch({
         type: "GET_SORTED_MOVIE_SUCCESS",
         payload: { sortedMovie: sortedMovie.data },

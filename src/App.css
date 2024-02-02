@@ -490,7 +490,28 @@ align-items: center;
 .login-box:hover {
   transform: scale(1.05)
 }
-
+/* SORT MOVIE */
+.select-box {
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 2px;
+  background-color: rgba(19,19,19,0.7);
+  border: 1px solid #fff;
+  color:#fff;
+}
+.select-box:focus {
+  outline: none;
+}
+.select-option{
+  text-align: center;
+  padding-left: -3px;
+}
 
 @media screen and (min-width: 768px){
   .movie-poster {

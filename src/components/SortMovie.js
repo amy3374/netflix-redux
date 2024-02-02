@@ -11,9 +11,13 @@ const SortMovie = ({ selected, setSelected }) => {
   console.log("sort컴포넌트2", selected, sortedMovie);
   return (
     <div>
-      <select onChange={(e) => setSelected(e.target.value)} value={selected}>
+      <select
+        className="select-box"
+        onChange={(e) => setSelected(e.target.value)}
+        value={selected}
+      >
         {selectList.map((item) => (
-          <option key={item} value={item}>
+          <option className="select-option" key={item} value={item}>
             {item}
           </option>
         ))}
