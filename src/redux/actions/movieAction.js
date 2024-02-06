@@ -1,12 +1,13 @@
 import api from "../api";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-function getMovies(searchQuery) {
+function getMovies(searchQuery, page) {
+  console.log("Action page", page);
   return async (dispatch, getState) => {
     try {
       dispatch({ type: "GET_MOVIES_REQUEST" });
       const popularMovieApi = api.get(
-        `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+        `/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
       );
       const topRatedApi = api.get(
         `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
@@ -21,7 +22,7 @@ function getMovies(searchQuery) {
       {
         searchQuery
           ? (searchApi = api.get(
-              `/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=1`
+              `/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${page}`
             ))
           : (searchApi = popularMovieApi);
       }
@@ -98,7 +99,7 @@ function getMovieDetail(id) {
   };
 }
 
-function getSortedMovies(selected, searchQuery) {
+function getSortedMovies(selected, page) {
   // console.log("action selected", selected);
   return async (dispatch) => {
     try {
@@ -108,14 +109,14 @@ function getSortedMovies(selected, searchQuery) {
       {
         selected === "인기순"
           ? (sortedApi = api.get(
-              `/movie/popular?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=1`
+              `/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
             ))
           : selected === "별점순"
           ? (sortedApi = api.get(
-              `/movie/top_rated?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=1`
+              `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
             ))
           : (sortedApi = api.get(
-              `/movie/now_playing?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=1`
+              `/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}`
             ));
       }
 
