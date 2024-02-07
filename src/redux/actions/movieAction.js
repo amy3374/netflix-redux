@@ -16,7 +16,7 @@ function getMovies(searchQuery, page) {
         `/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
       );
       const genreApi = api.get(
-        `/genre/movie/list?api_key=${API_KEY}&language=en'`
+        `/genre/movie/list?api_key=${API_KEY}&language=en`
       );
       let searchApi = ``;
       {
@@ -69,10 +69,10 @@ function getMovieDetail(id) {
         `/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US`
       );
       const genreApi = api.get(
-        `/genre/movie/list?api_key=${API_KEY}&language=en'`
+        `/genre/movie/list?api_key=${API_KEY}&language=en`
       );
       const movieModalApi = api.get(
-        `/movie/${id}/videos?api_key=${API_KEY}&language=en'`
+        `/movie/${id}/videos?api_key=${API_KEY}&language=en`
       );
       let [movieDetail, movieReview, recommendations, genreList, movieVideo] =
         await Promise.all([

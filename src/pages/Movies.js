@@ -108,7 +108,7 @@ const Movies = () => {
             breakClassName="page-item"
             breakLinkClassName="page-link"
             containerClassName="pagination"
-            activeClassName="active"
+            activeLinkClassName="active"
             renderOnZeroPageCount={null}
             forcePage={page - 1}
           />

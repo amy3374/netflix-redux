@@ -519,14 +519,18 @@ align-items: center;
   justify-content: center;
 }
 .pagination .page-link{
+  padding: 15px 20px;
   background-color: #000;
   color:#dc143c;
   border: none;
 }
-/* .page-link.active{
-  background-color: #dc143c;
+.pagination .page-link:hover{
+  color: #dc143c;
+}
+.active {
+  background-color: #dc143c !important;
   color: #fff;
-} */
+}
 
 @media screen and (min-width: 768px){
   .movie-poster {
