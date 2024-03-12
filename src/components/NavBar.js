@@ -58,6 +58,7 @@ const NavBar = () => {
     e.preventDefault();
     navigate(`/movies?q=${keyword}`);
     setKeyword("");
+    console.log("navbar search", keyword);
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MovieAction } from "../redux/actions/movieAction";
 import Banner from "../components/Banner";
@@ -10,8 +10,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const { popularMovies, topRatedMovies, upComingMovies, loading } =
     useSelector((state) => state.movie);
-  // console.log("home", popularMovies);
-  // console.log("home loading", loading);
+  console.log("home", popularMovies);
+  console.log("home loading", loading);
 
   useEffect(() => {
     dispatch(MovieAction.getMovies());

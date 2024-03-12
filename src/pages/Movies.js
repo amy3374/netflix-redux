@@ -39,6 +39,7 @@ const Movies = () => {
     setPage(selected + 1);
   };
   useEffect(() => {
+    getSearchedMovies();
     if (selected) {
       console.log("sort api");
       sort();
@@ -46,6 +47,7 @@ const Movies = () => {
       console.log("원래api");
       getSearchedMovies();
     }
+    console.log("query", query);
   }, [query, selected, page]);
 
   if (loading) {
@@ -61,14 +63,14 @@ const Movies = () => {
         <Col lg={2} xs={4} className="mt-3 mb-3">
           <SortMovie selected={selected} setSelected={setSelected} />
         </Col>
-        <Col Col lg={2} xs={4} className="mt-3 mb-3">
+        {/* <Col Col lg={2} xs={4} className="mt-3 mb-3">
           <GenreFilter
             genreKeyword={genreKeyword}
             setGenreKeyword={setGenreKeyword}
             setFilteredList={setFilteredList}
             movieList={movieList?.results}
           />
-        </Col>
+        </Col> */}
       </Row>
       <Row>
         <Col lg={12} xs={12}>

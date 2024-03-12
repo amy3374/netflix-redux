@@ -23,7 +23,7 @@ const MovieModal = ({ modal, setModal, id }) => {
       </Modal.Header>
       <Modal.Body>
         <YouTube
-          videoId={movieVideo?.results[3]?.key}
+          videoId={movieVideo?.results[0]?.key}
           opts={{
             width: "100%",
             height: "600",

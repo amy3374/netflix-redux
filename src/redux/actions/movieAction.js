@@ -2,7 +2,7 @@ import api from "../api";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 function getMovies(searchQuery, page) {
-  console.log("Action page", page);
+  console.log("Action page");
   return async (dispatch, getState) => {
     try {
       dispatch({ type: "GET_MOVIES_REQUEST" });
