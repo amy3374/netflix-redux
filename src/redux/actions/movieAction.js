@@ -1,13 +1,13 @@
 import api from "../api";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-function getMovies(searchQuery, page) {
+function getMovies(searchQuery) {
   console.log("Action page");
   return async (dispatch, getState) => {
     try {
       dispatch({ type: "GET_MOVIES_REQUEST" });
       const popularMovieApi = api.get(
-        `/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
+        `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
       );
       const topRatedApi = api.get(
         `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
@@ -22,7 +22,7 @@ function getMovies(searchQuery, page) {
       {
         searchQuery
           ? (searchApi = api.get(
-              `/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${page}`
+              `/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=1`
             ))
           : (searchApi = popularMovieApi);
       }
