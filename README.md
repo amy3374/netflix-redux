@@ -6,11 +6,11 @@
 
 <Br />
 <Br />
-# 배포
+### 배포
 [Netflix](https://netflix-redux-76de8.web.app)
 <Br />
 <Br />
-# 구현기능
+### 구현기능
 
 - 로그인
   - `firebase`를 통한 인증
