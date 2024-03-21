@@ -4,13 +4,14 @@
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple"><img src="https://img.shields.io/badge/Firebase-ffffff?style=for-the-badge&logo=Firebase&logoColor=yellow">
 
-<Br />
-<Br />
+<br />
+<br />
 
-### 배포
-[Netflix](https://netflix-redux-76de8.web.app)
-<Br />
-<Br />
+# 배포
+[Netflix-demo 바로가기](https://netflix-redux-76de8.web.app)
+
+<br />
+<br />
 
 ### 구현기능
 
