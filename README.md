@@ -6,7 +6,8 @@
 
 <Br />
 <Br />
-
+# 배포링크
+[Netflix](https://netflix-redux-76de8.web.app)
 # 구현기능
 
 - 로그인
